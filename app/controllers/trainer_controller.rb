@@ -18,7 +18,7 @@ class TrainerController < ApplicationController
     if !params["pokemon"]["name"].empty?
       @trainer.pokemon << Pokemon.create(name: params["pokemon"]["name"])
     end
-  redirect "/trainers/#{@trainers.id}"
+  redirect "/trainers/#{@trainer.id}"
   end
   
   get '/trainers/:id/edit' do
