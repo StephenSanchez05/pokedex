@@ -4,16 +4,26 @@ require './config/environment'
 class TrainerController < ApplicationController
   
   get '/trainers' do
+    redirect_if_not_logged_in
     @trainers = Trainer.all
     erb :'/trainers/index'
   end
   
   get '/trainers/new' do
+    redirect_if_not_logged_in
     @pokemon = Pokemon.all
     erb :'/trainers/new'
   end
   
-  post '/trainers' do
+  get '/trainers/:id/edit' do
+    redirect_if_not_logged_in
+    @trainer = Trainer.find(params[:id])
+    @pokemon = Pokemon.all
+    erb :'trainers/edit'
+  end
+  
+  post '/trainers/:id' do
+    redirect_if_not_logged_in
     @trainer = Trainer.create(params[:trainers])
     if !params["pokemon"]["name"].empty?
       @trainer.pokemon << Pokemon.create(name: params["pokemon"]["name"])
@@ -21,18 +31,15 @@ class TrainerController < ApplicationController
   redirect "/trainers/#{@trainer.id}"
   end
   
-  get '/trainers/:id/edit' do
-    @trainer = Trainer.find(params[:id])
-    @pokemon = Pokemon.all
-    erb :'trainers/edit'
-  end
-  
+
   get '/trainers/:id' do
+    redirect_if_not_logged_in
     @trainer = Trainer.find(params[:id])
     erb :'/trainers/show'
   end
   
   patch '/trainers/:id' do 
+    redirect_if_not_logged_in
     if !params[:trainers].keys.include?("pokemon_ids")
       params[:trainers]["pokemon_ids"] = []
     end 
