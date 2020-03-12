@@ -5,7 +5,7 @@ class TrainerController < ApplicationController
   
   get '/trainers' do
     @trainers = Trainer.all
-    erb :'/trainer_index'
+    erb :'trainers/trainer_index'
   end
   
   get 'trainers/new' do
