@@ -8,7 +8,7 @@ class TrainerController < ApplicationController
     erb :'trainers/trainer_index'
   end
   
-  get 'trainers/new' do
+  get '/trainers/new' do
     @pokemon = Pokemon.all
     erb :'/trainers/new'
   end
