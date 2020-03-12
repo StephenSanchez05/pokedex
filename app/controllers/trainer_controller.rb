@@ -5,7 +5,7 @@ class TrainerController < ApplicationController
   
   get '/trainers' do
     @trainers = Trainer.all
-    erb :'trainers/trainer_index'
+    erb :'/trainers/index'
   end
   
   get '/trainers/new' do
@@ -18,7 +18,7 @@ class TrainerController < ApplicationController
     if !params["pokemon"]["name"].empty?
       @trainer.pokemon << Pokemon.create(name: params["pokemon"]["name"])
     end
-  redirect "/owners/#{@trainers.id}"
+  redirect "/trainers/#{@trainers.id}"
   end
   
   get '/trainers/:id/edit' do

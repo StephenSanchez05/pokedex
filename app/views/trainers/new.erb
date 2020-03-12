@@ -7,7 +7,7 @@
   <p>Select an existing Pokemon or make a new one!</p>
   
   <h2>Existing Pokemon</h2>
-  <% @pokemon.map(&:name).uniq.each do |poke| %>
+  <% @pokemon.each do |poke| %>
   <input type="checkbox" name="trainer[pokemon_ids][]" id="<%= poke.id %>" value="<%= poke.id %>"><%= poke.name %></input>
   <br>
   <% end %>
