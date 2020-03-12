@@ -1,4 +1,7 @@
-class TrainerController < ApplicationController
+require './config/environment'
+
+
+class TrainerController < Sinatra::Base
   
   get '/trainers' do
     @trainers = Trainer.all
