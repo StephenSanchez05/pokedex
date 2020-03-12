@@ -55,4 +55,9 @@ class ApplicationController < Sinatra::Base
   end
 end 
 
+  def "/logout" do
+    session.clear
+    redirect "/"
+  end
+
 end
