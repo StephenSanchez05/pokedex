@@ -1,8 +1,3 @@
 <h1>Welcome to the Pokedex</h1>
 
-<h1>Add your Pokemon</h1>
-<form action="/user/<% @user.id %>" method="POST">
-<% @pokemon.each do |poke| %>
-  <input type="checkbox" name="user[pokemon_id][]" id="<% pokemon.id %>" value="<%= pokemon.id %>" <%='checked' if @user.pokemon.include?(pokemon) %>><%= pokemon.name %></input><br>
-  <% end %>
-</form>
+<h3>You can start by <a href= "/trainers">Creating a Trainer</a></h3>
