@@ -28,3 +28,25 @@ class TrainerController < ApplicationController
     @trainer = Trainer.find(params[:id])
     erb :'/trainers/show'
   end
+  
+  patch '/trainers/:id' do 
+    if !params[:trainers].keys.include?("pokemon_ids")
+      params[:trainers]["pokemon_ids"] = []
+    end 
+    @trainer = Trainers.find(params[:id])
+    @trainer.update(params["trainer"])
+    if !params["pokemon"]["name"].empty?
+      @trainer.pokemon << Pokemon.create(name: params["pokemon"]["name"])
+    end
+    redirect "trainers/#{@trainer.id}"
+  end
+end
+    
+    
+    
+    
+    
+    
+    
+    
+    
