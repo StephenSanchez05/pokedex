@@ -17,3 +17,14 @@ class TrainerController < ApplicationController
     end
   redirect "/owners/#{@trainers.id}"
   end
+  
+  get '/trainers/:id/edit' do
+    @trainer = Trainer.find(params[:id])
+    @pokemon = Pokemon.all
+    erb :'trainers/edit'
+  end
+  
+  get '/trainers/:id' do
+    @trainer = Trainer.find(params[:id])
+    erb :'/trainers/show'
+  end
