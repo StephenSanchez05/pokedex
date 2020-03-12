@@ -10,7 +10,7 @@ ActiveRecord::Base.establish_connection(
   :database => "db/#{ENV['SINATRA_ENV']}.sqlite"
 )
 
+
+
 require_all 'app'
 
-require "./app/models/user"
-require "./app/controllers/trainer_controller"

@@ -1,16 +1,16 @@
 require './config/environment'
 
 
-class TrainerController < Sinatra::Base
+class TrainerController < ApplicationController
   
   get '/trainers' do
     @trainers = Trainer.all
-    erb :'/trainers.index'
+    erb :trainer_index
   end
   
   get 'trainers/new' do
     @pokemon = Pokemon.all
-    erb :'/pokemon/new'
+    erb :'/trainers/new'
   end
   
   post '/trainers' do
