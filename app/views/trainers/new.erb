@@ -1,0 +1,14 @@
+<h1>Create a new Trainer</h1>
+
+<form action="/trainers" method="POST">
+  <label>Trainer Name:</label>
+  <input type="text" name"owner[name">
+  <br>
+  <p>Select an existing Pokemon or make a new one!</p>
+  
+  <h2>Existing Pokemon</h2>
+  <% @pokemon.each do |poke| %>
+  <input type="checkbox" name="trainer[pokemon_ids][]" id="<%= poke.id %>" value="<%= poke.id %>"><%= poke.name %></input>
+  <br>
+  <% end %>
+</form>
