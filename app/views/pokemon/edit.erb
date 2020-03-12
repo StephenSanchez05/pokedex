@@ -1,0 +1,6 @@
+<h1>Update your Pokemon</h1>
+<form action="/pokemon/<% pokemon.id %>" method="POST">
+ <input id="hiddin" type="hidden" name="_method" value="patch">
+ <label>Edit the Pokemon's Name:</label>
+ <input type="text" name="pokemon[name]" id="pokemon_name" value="<%= @pokemon.name %>">
+ </form>
