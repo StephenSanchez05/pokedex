@@ -17,7 +17,7 @@ class TrainerController < ApplicationController
   
   get '/trainers/:id/edit' do
     #redirect_if_not_logged_in
-    @trainer = Trainer.find(params[:id])
+    @trainer = Trainer.find_by_id(params[:id])
     @pokemon = Pokemon.all
     erb :'/trainers/edit'
   end
