@@ -24,17 +24,17 @@ class TrainerController < ApplicationController
   
   post '/trainers/:id' do
     #redirect_if_not_logged_in
-    @trainer = Trainer.create(params[:trainers])
+    @trainer = Trainer.find_by(params[:trainers])
     if !params["pokemon"]["name"].empty?
       @trainer.pokemon << Pokemon.create(name: params["pokemon"]["name"])
     end
-  redirect "/trainers/#{@trainer.id}"
+  redirect "/trainers/new"
   end
   
 
   get '/trainers/:id' do
     #redirect_if_not_logged_in
-    @trainer = Trainer.find(params[:id])
+    @trainer = Trainer.find_by_id(params[:id])
     erb :'/trainers/show'
   end
   
@@ -43,6 +43,11 @@ class TrainerController < ApplicationController
   @trainer.save
   redirect "/trainers"
   end 
+  
+  get "/trainers/show" do
+    @trainer = Trainer.all
+    erb :'/trainers/show'
+  end
   
   patch '/trainers/:id' do 
    # redirect_if_not_logged_in
