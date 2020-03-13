@@ -42,13 +42,13 @@ class TrainerController < ApplicationController
   end 
   
   get "/trainers/show" do
-    @trainer = Trainer.all
+    @trainer = Trainer.find_by_id(params[:id])
     erb :'/trainers/show'
   end
   
   patch '/trainers/:id' do 
    # redirect_if_not_logged_in
-    @trainer = Trainers.find_by_id(params[:id])
+    @trainer = Trainer.find_by_id(params[:id])
     @trainer.name = params[:name]
     @trainer.save
     if !params["pokemon"]["name"].empty?
@@ -58,7 +58,7 @@ class TrainerController < ApplicationController
     redirect "/trainers/#{@trainer.id}"
     else
     redirect 
-      "/trainers/:id/edit"
+      "/error"
     end
   end
 end
