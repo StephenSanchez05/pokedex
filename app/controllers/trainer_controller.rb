@@ -48,15 +48,18 @@ class TrainerController < ApplicationController
   
   patch '/trainers/:id' do 
    # redirect_if_not_logged_in
-    if !params[:trainers].keys.include?("pokemon_ids")
-      params[:trainers]["pokemon_ids"] = []
-    end 
-    @trainer = Trainers.find(params[:id])
-    @trainer.update(params["trainer"])
+    @trainer = Trainers.find_by_id(params[:id])
+    @trainer.name = params[:name]
+    @trainer.save
     if !params["pokemon"]["name"].empty?
       @trainer.pokemon << Pokemon.create(name: params["pokemon"]["name"])
     end
+    if @trainer.save
     redirect "/trainers/#{@trainer.id}"
+    else
+    redirect 
+      "/trainers/:id/edit"
+    end
   end
 end
     
