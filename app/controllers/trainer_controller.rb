@@ -25,10 +25,8 @@ class TrainerController < ApplicationController
   post '/trainers/:id' do
     #redirect_if_not_logged_in
     @trainer = Trainer.find_by(params[:trainers])
-    if !params["pokemon"]["name"].empty?
-      @trainer.pokemon << Pokemon.create(name: params["pokemon"]["name"])
     end
-  redirect "/trainers/new"
+  redirect "/trainers/#{@trainer.id}"
   end
   
 
