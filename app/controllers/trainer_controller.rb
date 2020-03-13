@@ -39,7 +39,6 @@ class TrainerController < ApplicationController
   end
   
   post "/trainers" do
- binding.pry 
  unless Trainer.valid_params?(params)
     redirect "/bags/new?error=invalid inputs"
   end

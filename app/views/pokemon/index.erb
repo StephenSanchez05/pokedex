@@ -1,0 +1,7 @@
+<% @pokemon.each do |poke| %>
+<%= poke.name %>
+<br>
+<a href="/pokemon/<%=poke.id%>/edit">Edit</a>
+<br>
+<br>
+<% end %>
