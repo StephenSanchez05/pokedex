@@ -39,10 +39,8 @@ class TrainerController < ApplicationController
   end
   
   post "/trainers" do
- unless Trainer.valid_params?(params)
-    redirect "/bags/new?error=invalid inputs"
-  end
-  Trainer.create(params)
+  @trainer = Trainer.create(params)
+  @trainer.save
   redirect "/trainers"
   end 
   
