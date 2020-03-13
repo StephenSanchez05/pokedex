@@ -52,12 +52,12 @@ class ApplicationController < Sinatra::Base
     User.find(session[:user_id])
   end
   
-    get '/logout' do
+    get "/logout" do
     if session[:user_id] != nil
       session.destroy
-      redirect to '/login'
+      redirect to "/login"
     else
-      redirect to '/'
+      redirect to "/"
     end
   end
   
