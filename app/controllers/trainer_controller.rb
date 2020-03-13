@@ -25,7 +25,6 @@ class TrainerController < ApplicationController
   post '/trainers/:id' do
     #redirect_if_not_logged_in
     @trainer = Trainer.find_by(params[:trainers])
-    end
   redirect "/trainers/#{@trainer.id}"
   end
   
