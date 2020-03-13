@@ -1,5 +1,8 @@
+<h1>Here are a list of your Trainers></h1>
+<br>
 <% @trainers.each do |trainer| %>
-  <h2><%= trainer.name %></h2><br />
+  <h2><%= trainer.name %></h2>
   <a href="/trainer/<%=trainer.id%>/edit">Edit</a>
-  <br />
+  <br>
+  <br>
   <% end %>
