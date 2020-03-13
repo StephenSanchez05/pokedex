@@ -1,5 +1,7 @@
+<h1>This is your Pokedex</h1>
+<h2>Here is a list of all the pokemon you own</h2>
 <% @pokemon.each do |poke| %>
-<%= poke.name %>
+<h3>Name: <%= poke.name %> Type: <%= poke.element %></h3>
 <br>
 <a href="/pokemon/<%=poke.id%>/edit">Edit</a>
 <br>
