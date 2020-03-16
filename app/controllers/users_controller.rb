@@ -1,5 +1,17 @@
 class UserController < ApplicationController
   
+  get '/users/id' do
+    if !logged_in?
+      redirect '/trainers'
+    end
+    
+    @user = User.find(params)[:id])
+      erb :'users/show'
+    else
+      redirect '/trainers'
+    end
+  end
+  
   get "/signup" do
     if !session[:user_id]
     erb :signup

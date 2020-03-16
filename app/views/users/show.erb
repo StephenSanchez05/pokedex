@@ -1,0 +1,7 @@
+<h1>Here's a list of your Trainers, <%= @user.username %></h1>
+<% @user.trainer.each do |trainer| %>
+  <ul>
+      <li><a href="/trainer/<%=trainer.id%>"><% = trainer.name%></a></li>
+  </ul>
+  <br>
+  <% end %>
