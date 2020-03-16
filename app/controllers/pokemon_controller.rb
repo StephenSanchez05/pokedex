@@ -20,7 +20,7 @@ class PokemonController < ApplicationController
   post '/pokemon/:id' do
   redirect_if_not_logged_in
     @pokemon = Pokemon.find_by(params[:trainers])
-  redirect "/pokemon/#{@pokemon.id}"
+  redirect "/pokemon/edit"
   end
   
   post "/pokemon" do
