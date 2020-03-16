@@ -10,13 +10,6 @@
       <input type="text" name="pokemon[element]" id= "pokemon_element" value="<%= @pokemon.element %>">
       
       <br>
-      <p>Does this pokemon belong to any of the Trainers below?</p>
-      
-      <h3>Trainers</h3>
-      <% Trainer.all.each do |trainer| %>
-        <input type="checkbox" name="pokemon[trainer_id]" id="<%= trainer.id %>" value="<%= trainer.id %>" <%='checked' if @pokemon.trainer == trainer %><%= trainer.name %>></input>
-        <br>
-        <% end %>
         
       <input type="submit" value="Update Pokemon">
       </form>
