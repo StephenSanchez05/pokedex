@@ -13,13 +13,13 @@ class PokemonController < ApplicationController
   
   get "/pokemon/:id/edit" do
     redirect_if_not_logged_in
-    @pokemon = Pokemon.find(params[:id])
+    @pokemon = Pokemon.find_by(params[:id])
     erb :'pokemon/edit'
   end
   
   post "/pokemon" do
   redirect_if_not_logged_in
-  @pokemon = Pokemon.find_or_create_by(params)
+  @pokemon = Pokemon.create(params)
   @pokemon.save
   redirect "/pokemon"
   end 
