@@ -17,10 +17,6 @@ class ApplicationController < Sinatra::Base
     erb :error
   end 
   
-  def current_user
-    User.find(session[:user_id])
-  end
-  
   
   helpers do
     
