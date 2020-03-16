@@ -26,6 +26,7 @@ class UserController < ApplicationController
       redirect '/error'
     else
       @user = User.create(username: params[:username], password: params[:password])
+      @user.save
       session[:user_id] = @user.id
       redirect '/login'
     end
