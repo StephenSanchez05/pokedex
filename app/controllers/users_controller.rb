@@ -6,8 +6,8 @@ class UserController < ApplicationController
     end
     
     @user = User.find(params[:id])
-      erb :'users/show'
       if !@user.nil? && @user == current_user
+      erb :'users/show'
     else
       redirect '/trainers'
     end
@@ -33,7 +33,12 @@ class UserController < ApplicationController
   end
   
   get "/login" do
-    erb :login
+    if !session[:user_id]
+      erb :login
+    else 
+      redirect "/login"
+    end
+    
   end
   
   post "/login" do
