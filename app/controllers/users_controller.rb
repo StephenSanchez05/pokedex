@@ -1,14 +1,19 @@
 class UserController < ApplicationController
   
-   get "/signup" do
+  get "/signup" do
+    if !session[:user_id]
     erb :signup
+  else
+    redirect to '/welcome'
+  end
   end
   
   post "/signup" do
     if params[:username] == "" || params[:password] == ""
       redirect '/error'
     else
-      User.create(username: params[:username], password: params[:password])
+      @user = User.create(username: params[:username], password: params[:password])
+      session[:user_id] = @user.id
       redirect '/login'
     end
   end
@@ -35,3 +40,4 @@ class UserController < ApplicationController
       redirect to "/"
     end
   end
+end
