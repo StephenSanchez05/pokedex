@@ -5,8 +5,9 @@ class UserController < ApplicationController
       redirect '/trainers'
     end
     
-    @user = User.find(params)[:id])
+    @user = User.find(params[:id])
       erb :'users/show'
+      if !@user.nil? && @user == current_user
     else
       redirect '/trainers'
     end
