@@ -37,7 +37,7 @@ class PokemonController < ApplicationController
     @pokemon.element = params[:pokemon]
     @pokemon.save
     if @pokemon.save
-    redirect "/pokmeon/#{@pokemon.id}"
+    redirect "/pokemon"
     else
     redirect 
       "/error"
