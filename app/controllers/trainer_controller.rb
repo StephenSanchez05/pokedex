@@ -4,13 +4,13 @@ require './config/environment'
 class TrainerController < ApplicationController
   
   get '/trainers' do
-   # redirect_if_not_logged_in
+   redirect_if_not_logged_in
     @trainers = Trainer.all
     erb :'/trainers/index'
   end
   
   get '/trainers/new' do
-  #  redirect_if_not_logged_in
+   redirect_if_not_logged_in
     @pokemon = Pokemon.all
     erb :'/trainers/new'
   end

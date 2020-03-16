@@ -13,11 +13,6 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
   
-  get "/welcome" do
-     #@user = User.find(session[:user_id])
-    erb :welcome
-  end
-  
   get "/error" do
     erb :error
   end 
