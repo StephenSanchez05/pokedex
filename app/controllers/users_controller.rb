@@ -28,7 +28,7 @@ class UserController < ApplicationController
       @user = User.create(username: params[:username], password: params[:password])
       @user.save
       session[:user_id] = @user.id
-      redirect '/login'
+      redirect '/welcome'
     end
   end
   
