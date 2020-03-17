@@ -78,7 +78,7 @@ class TrainerController < ApplicationController
   helpers do
     
     def belong_to_user?
-      @trainer.user_id == session[:id]
+      @trainer.user_id == session[:user_id]
     end
   end
   
