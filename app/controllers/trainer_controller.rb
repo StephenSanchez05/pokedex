@@ -37,6 +37,7 @@ class TrainerController < ApplicationController
   end
   
   post "/trainers" do
+  redirect_if_not_logged_in
   @trainer = Trainer.find_or_create_by(params)
   @user = User.find(session[:user_id])
   @user.trainers << @trainer
@@ -45,6 +46,7 @@ class TrainerController < ApplicationController
   end 
   
   get "/trainers/show" do
+    redirect_if_not_logged_in
     @trainer = Trainer.find_by_id(params[:id])
     erb :'/trainers/show'
   end
