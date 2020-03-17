@@ -20,7 +20,7 @@ class UserController < ApplicationController
     if params[:username] == "" || params[:password] == ""
       redirect '/error'
     else
-      @user = User.new(username: params[:username], password: params[:password])
+      @user = User.find_or_create_by(username: params[:username], password: params[:password])
       @user.save
       session[:user_id] = @user.id
       redirect '/welcome'
