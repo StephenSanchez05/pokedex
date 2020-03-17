@@ -35,7 +35,7 @@ class UserController < ApplicationController
     if !session[:user_id]
       erb :login
     else 
-      redirect "/login"
+      redirect "/"
     end
     
   end
