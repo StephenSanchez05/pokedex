@@ -5,6 +5,7 @@ class TrainerController < ApplicationController
   
   get '/trainers' do
    redirect_if_not_logged_in
+    @user = User.find(session[:user_id])
     @trainers = Trainer.all
     erb :'/trainers/index'
   end
@@ -37,6 +38,8 @@ class TrainerController < ApplicationController
   
   post "/trainers" do
   @trainer = Trainer.find_or_create_by(params)
+  @user = User.find(session[:user_id])
+  @user.trainers << @trainer
   @trainer.save
   redirect "/trainers"
   end 

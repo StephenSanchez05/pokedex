@@ -5,10 +5,9 @@ require './config/environment'
 class ApplicationController < Sinatra::Base
 
   register Sinatra::ActiveRecordExtension
+  set :views, Proc.new { File.join(root, "../views/") }
   enable :sessions
   set :session_secret, "password"
-  set :views, Proc.new { File.join(root, "../views/") }
-
 
   get "/" do
     erb :index
@@ -17,7 +16,6 @@ class ApplicationController < Sinatra::Base
   get "/error" do
     erb :error
   end 
-  
   
   helpers do
     
@@ -33,7 +31,7 @@ class ApplicationController < Sinatra::Base
     
 
     def current_user
-    User.find(session[:user_id])
+      User.find(session[:user_id])
   end
 end
 

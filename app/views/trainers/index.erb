@@ -1,6 +1,6 @@
 <h1>Here are a list of your Trainers</h1>
 <br>
-<% @trainers.each do |trainer| %>
+<% @user.trainers.each do |trainer| %>
   <h2><%= trainer.name %> <a href="/trainers/<%=trainer.id%>/edit">Edit</a><h2>
   <br>
   <% end %>
