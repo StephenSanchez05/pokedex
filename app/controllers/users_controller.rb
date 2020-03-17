@@ -4,7 +4,6 @@ class UserController < ApplicationController
     if !logged_in?
       redirect '/trainers'
     end
-    
     @user = User.find(params[:id])
       if !@user.nil? && @user == current_user
       erb :'users/show'
@@ -52,9 +51,15 @@ class UserController < ApplicationController
   end
   
   get "/welcome" do
-     @user = User.find_by(session[:user_id])
+  @user = User.find_by(session[:user_id])
     erb :welcome
   end
+  
+  get "/show" do
+    @user = User.find_by(session[:user_id])
+    erb :'/users/show'
+  end
+    
   
   get "/logout" do
     if session[:user_id] != nil
