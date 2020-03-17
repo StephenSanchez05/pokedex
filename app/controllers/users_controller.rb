@@ -32,11 +32,8 @@ class UserController < ApplicationController
   end
   
   get "/login" do
-    if !session[:user_id]
       erb :login
-    else 
-      redirect "/"
-    end
+  end
     
   end
   
@@ -64,7 +61,7 @@ class UserController < ApplicationController
   get "/logout" do
     if session[:user_id] != nil
       session.destroy
-      redirect to "/login"
+      redirect to "/"
     else
       redirect to "/"
     end
