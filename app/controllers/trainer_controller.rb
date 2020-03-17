@@ -47,14 +47,10 @@ class TrainerController < ApplicationController
   post "/trainers" do
   redirect_if_not_logged_in
   @trainer = Trainer.find_or_create_by(params)
-  if belong_to_user?
   @user = User.find(session[:user_id])
   @trainer.update(user_id: @user.id)
   @trainer.save
   redirect "/trainers"
-  else
-    redirect "/error"
-  end
   end 
   
   get "/trainers/show" do
