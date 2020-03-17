@@ -19,8 +19,12 @@ class TrainerController < ApplicationController
   get '/trainers/:id/edit' do
    redirect_if_not_logged_in
     @trainer = Trainer.find_by_id(params[:id])
+    if belong_to_user?
     @pokemon = Pokemon.all
     erb :'/trainers/edit'
+  else
+    redirect "/error"
+  end
   end
   
   post '/trainers/:id' do
@@ -33,16 +37,24 @@ class TrainerController < ApplicationController
   get '/trainers/:id' do
    redirect_if_not_logged_in
     @trainer = Trainer.find_by_id(params[:id])
+    if belong_to_user?
     erb :'/trainers/show'
+  else
+    redirect "/error"
+  end
   end
   
   post "/trainers" do
   redirect_if_not_logged_in
   @trainer = Trainer.find_or_create_by(params)
+  if belong_to_user?
   @user = User.find(session[:user_id])
-  @user.trainers << @trainer
+  @trainer.update(user_id: @user.id)
   @trainer.save
   redirect "/trainers"
+  else
+    redirect "/error"
+  end
   end 
   
   get "/trainers/show" do
@@ -66,6 +78,14 @@ class TrainerController < ApplicationController
       "/error"
     end
   end
+  
+  helpers do
+    
+    def belong_to_user?
+      @trainer.user_id == session[:id]
+    end
+  end
+  
 end
     
     
