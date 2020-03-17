@@ -51,12 +51,12 @@ class UserController < ApplicationController
   end
   
   get "/welcome" do
-  @user = User.find_by(session[:user_id])
+  @user = User.find(session[:user_id])
     erb :welcome
   end
   
   get "/show" do
-    @user = User.find_by(session[:user_id])
+    @user = User.find(session[:user_id])
     erb :'/users/show'
   end
     

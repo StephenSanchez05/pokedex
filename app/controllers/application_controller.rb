@@ -5,6 +5,7 @@ require './config/environment'
 class ApplicationController < Sinatra::Base
 
   register Sinatra::ActiveRecordExtension
+  enable :sessions
   set :session_secret, "password"
   set :views, Proc.new { File.join(root, "../views/") }
 
