@@ -55,7 +55,7 @@ class TrainerController < ApplicationController
     @trainer.name = params[:name]
     @trainer.save
     if !params["pokemon"]["name"].empty?
-      @trainer.pokemon << Pokemon.find_or_create_by(name: params["pokemon"]["name"])
+      @trainer.pokemon << Pokemon.find_or_create_by(name: params["pokemon"]["name"], element: params["pokmeon"]["element"])
     end
     if @trainer.save
     redirect "/trainers/#{@trainer.id}"

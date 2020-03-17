@@ -13,11 +13,7 @@ class UserController < ApplicationController
   end
   
   get "/signup" do
-    if !session[:user_id]
     erb :signup
-  else
-    redirect to '/welcome'
-  end
   end
   
   post "/signup" do
@@ -33,8 +29,6 @@ class UserController < ApplicationController
   
   get "/login" do
       erb :login
-  end
-    
   end
   
   post "/login" do
